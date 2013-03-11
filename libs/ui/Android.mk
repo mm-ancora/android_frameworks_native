@@ -60,7 +60,13 @@ ifeq ($(BOARD_EGL_NEEDS_HANDLE_VALUE),true)
 LOCAL_CFLAGS += -DEGL_NEEDS_HANDLE
 endif
 
-LOCAL_MODULE := libui
+
+ifeq ($(BOARD_USES_LEGACY_OVERLAY), true)
+LOCAL_SRC_FILES += legacy/Overlay.cpp
+endif
+
+LOCAL_MODULE:= libui
+
 
 include $(BUILD_SHARED_LIBRARY)
 
